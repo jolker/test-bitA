@@ -1,5 +1,13 @@
 # Coding Guideline
 
+## Built With
+- Lodash
+- Pinia
+- element-ui
+- tailwindcss
+- @vue/composition-api
+- Pug
+
 ## Installation Requirements
 
 - Node.js >= v16.x
