@@ -36,7 +36,9 @@ export default {
     remove(id) {
       console.log("remove", id);
       this.storeTicket.removeItem(this.idTicket, id);
-      this.$forceUpdate();
+      setTimeout(() => {
+        this.$forceUpdate();
+      }, 1000);
     },
   },
 };
