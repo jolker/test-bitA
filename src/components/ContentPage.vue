@@ -6,7 +6,7 @@ div
     .ml-3.cursor-pointer.rounded-md.text-white.bg-red-600.py-2.px-4(@click='create') Create
   .content.mt-5
     .grid.grid-cols-4.gap-4
-      div(v-for='ticket of storeTicket.tickets' :key='ticket.id')
+      div(v-for='ticket in tickets' :key='ticket.id')
         TicketItem(:ticket='ticket')
 
 </template>
@@ -14,6 +14,7 @@ div
 <script>
 import { useTicketStore } from "../store/ticket";
 import TicketItem from "./TicketItem";
+import { storeToRefs } from "pinia";
 
 export default {
   name: "ContentPage",
@@ -27,9 +28,16 @@ export default {
     };
   },
 
+  computed: {
+    tickets() {
+      return this.getTickets;
+    },
+  },
+
   setup() {
     const storeTicket = useTicketStore();
-    return { storeTicket };
+    const { getTickets } = storeToRefs(storeTicket);
+    return { storeTicket, getTickets };
   },
 
   methods: {

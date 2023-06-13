@@ -6,7 +6,9 @@ export const useTicketStore = defineStore({
   state: () => ({
     tickets: [],
   }),
-  getters: {},
+  getters: {
+    getTickets: (state) => state.tickets,
+  },
   actions: {
     addTodo(title) {
       const ticket = {
@@ -44,6 +46,9 @@ export const useTicketStore = defineStore({
         });
         // find.items = find.items.filter((item) => item.id !== subId);
       }
+      const clone = _.cloneDeep(this.tickets);
+
+      this.tickets = clone;
     },
   },
 });
